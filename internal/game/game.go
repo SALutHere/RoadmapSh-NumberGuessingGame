@@ -40,7 +40,7 @@ func setDifficulty(difficulty *int) {
 func startRound(difficulty int) {
 	hiddenNumber := rand.Intn(100) + 1
 
-	var attempts, maxAttempts int
+	var maxAttempts int
 	switch difficulty {
 	case 1:
 		maxAttempts = 10
@@ -50,14 +50,15 @@ func startRound(difficulty int) {
 		maxAttempts = 3
 	}
 
+	attempts := 1
 	for attempts < maxAttempts {
 		assumption := input.GetInt("Enter your guess: ")
 		if assumption > hiddenNumber {
-			fmt.Printf("Incorrect! The number is less than %d. Attempts left: %d\n\n", assumption, maxAttempts-attempts-1)
+			fmt.Printf("Incorrect! The number is less than %d. Attempts left: %d\n\n", assumption, maxAttempts-attempts)
 			attempts++
 			continue
 		} else if assumption < hiddenNumber {
-			fmt.Printf("Incorrect! The number is greater than %d. Attempts left: %d\n\n", assumption, maxAttempts-attempts-1)
+			fmt.Printf("Incorrect! The number is greater than %d. Attempts left: %d\n\n", assumption, maxAttempts-attempts)
 			attempts++
 			continue
 		} else {
