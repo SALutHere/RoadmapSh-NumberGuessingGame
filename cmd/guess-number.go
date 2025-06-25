@@ -1,9 +1,9 @@
 package main
 
 import (
-	"guess-number/internal/game"
+	"guess-number/internal/logic"
 )
 
 func main() {
-	game.Start()
+	logic.NewGame()
 }
